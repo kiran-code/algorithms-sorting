@@ -1,0 +1,3 @@
+src/app/localDataBase directory has Average Temperature Data for all the countries,
+Run http-server --cors='*', to make this data available on http://localhost:8080/
+
