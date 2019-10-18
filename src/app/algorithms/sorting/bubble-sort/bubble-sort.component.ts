@@ -9,8 +9,8 @@ import {CountryTemperature} from '../../../models/CountryTemperature';
 })
 export class BubbleSortComponent implements OnInit {
   countriesData: CountryTemperature[];
-  countryNames = [{name: 'India'}, {name: 'Nepal'}, {name: 'Bhutan'}, {name: 'Sri Lanka'}];
   showTable = false;
+  sortingDiection = '(asc)';
 
   constructor(private fetchData: FetchSortingDataService) {
   }
@@ -26,16 +26,45 @@ export class BubbleSortComponent implements OnInit {
   }
 
   bubbleSortData() {
-    console.log('sort data', this.countriesData.length, this.countriesData[0].temperature);
-    // tslint:disable-next-line:prefer-for-of
+    this.dataCorrection(this.countriesData);
     for (let i = 0; i < this.countriesData.length; i++) {
-        for (let j = 0; j < this.countriesData.length - i - 1; j++) {
-          if ( this.countriesData[j].temperature > this.countriesData[j + 1].temperature) {
-              const temp = this.countriesData[j];
-              this.countriesData[j] = this.countriesData[j + 1];
-              this.countriesData[j + 1] = temp;
+      for (let j = 0; j < this.countriesData.length - i - 1; j++) {
+        if (this.sortingDiection === '(asc)') {
+          if (this.countriesData[j].temperature > this.countriesData[j + 1].temperature) {
+            this.swap(j);
+          }
+        } else {
+          if (this.countriesData[j].temperature < this.countriesData[j + 1].temperature) {
+            this.swap(j);
           }
         }
+      }
+    }
+    this.sortingDiection = (this.sortingDiection === '(asc)' ? '(dsc)' : '(asc)');
+  }
+
+  private swap(j: number) {
+    const temp = this.countriesData[j];
+    this.countriesData[j] = this.countriesData[j + 1];
+    this.countriesData[j + 1] = temp;
+  }
+
+  dataCorrection(obj: CountryTemperature[]) {
+    for (const each of obj) {
+      if (!each.temperature) {
+        each.temperature = -1000;
+      } else {
+        each.temperature *= 1;
+      }
     }
   }
+
+/*
+  convertToNumber(value: any): number {
+    if (value) {
+      return value * 1;
+    }
+    return -1000;
+  }
+*/
 }
