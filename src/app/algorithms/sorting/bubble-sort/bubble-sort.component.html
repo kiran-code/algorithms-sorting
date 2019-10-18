@@ -1,9 +1,10 @@
-<div>
+<div class="bubbleSort">
   <div>
-    <button (click)="downloadData()" class="button left">Download Data</button>
-    <button [className]="!showTable? 'disabled':'enable'" class="button right"
-            [disabled]="!showTable">Sort Data
-    </button>
+    <span class="heading">Bubble Sort</span>
+    <button (click)="downloadData()" class="button right bg-gradient1">Download Data</button>
+    <!--<button [className]="!showTable? 'disabled':'enable'" class="button right" [disabled]="!showTable">
+      Sort Data
+    </button>-->
   </div>
   <!--<div>{{countriesData | json}}</div>-->
   <div>
