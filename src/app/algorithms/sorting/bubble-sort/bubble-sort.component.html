@@ -1,7 +1,7 @@
 <div>
   <div>
     <button (click)="downloadData()" class="button left">Download Data</button>
-    <button (click)="bubbleSortData()" [className]="!showTable? 'disabled':'enable'" class="button right"
+    <button [className]="!showTable? 'disabled':'enable'" class="button right"
             [disabled]="!showTable">Sort Data
     </button>
   </div>
@@ -12,13 +12,13 @@
         <thead>
         <tr>
           <th class="th th-country">Country</th>
-          <th class="th th-temperature">Avg Temperature</th>
+          <th class="th th-temperature" (click)="bubbleSortData()">Avg Temperature {{sortingDiection}}</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let country of countriesData; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
           <td class="td th-country">{{country.country}}</td>
-          <td class="td th-temperature">{{country.temperature}}</td>
+          <td class="td th-temperature" >{{country.temperature}}</td>
         </tr>
         </tbody>
       </table>
