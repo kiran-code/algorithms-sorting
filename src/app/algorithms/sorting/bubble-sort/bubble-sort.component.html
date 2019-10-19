@@ -8,12 +8,11 @@
   </div>
   <!--<div>{{countriesData | json}}</div>-->
   <div>
-    <table *ngIf="showTable">
-      <table class="table header">
+      <table *ngIf="showTable" class="table header">
         <thead>
         <tr>
           <th class="th th-country">Country</th>
-          <th class="th th-temperature" (click)="bubbleSortData()">Avg Temperature {{sortingDiection}}</th>
+          <th class="th th-temperature" (click)="bubbleSortData()">Avg Temperature</th>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +22,6 @@
         </tr>
         </tbody>
       </table>
-    </table>
   </div>
 
 </div>
