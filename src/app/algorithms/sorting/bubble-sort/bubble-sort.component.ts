@@ -52,7 +52,7 @@ export class BubbleSortComponent implements OnInit {
   dataCorrection(obj: CountryTemperature[]) {
     for (const each of obj) {
       if (!each.temperature) {
-        each.temperature = -1000;
+        each.temperature = Math.random() * (10) + 15;
       } else {
         each.temperature *= 1;
       }
