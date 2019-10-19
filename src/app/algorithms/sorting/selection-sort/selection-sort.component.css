@@ -1,0 +1,114 @@
+.button {
+  background: #ff0000;
+  display: inline-block;
+  font-family: 'Heebo', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  line-height: 17px;
+  color: #ffffff;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  float: right;
+}
+
+.heading {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.bg-gradient1 {
+  text-shadow: 0px 0px 1px #BF4C28;
+}
+
+/*div {
+  display: block;
+}*/
+
+.bubbleSort{
+  border: 1px dotted black;
+  width: 300px;
+}
+
+.odd {
+  background: #C3E6CB;
+}
+
+.even {
+  background: #F5C6CB;
+}
+
+/*
+.left{
+  float: left;
+}
+*/
+
+/*
+.right{
+  float: right;
+}
+*/
+
+.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.table.header {
+  margin-bottom: 0;
+  border: 1px solid black;
+  background: #B8DAFF;
+}
+
+.th {
+  border: 1px dotted black;
+  text-align: left;
+}
+
+.th-country {
+  width: 275px;
+}
+
+.th-temperature {
+  width: 100px;
+}
+
+
+.td {
+  border: 1px dotted black;
+  text-align: left;
+}
+
+.table-content {
+  overflow-y: auto;
+  overflow: hidden;
+  height: 441px;
+}
+
+.table-bottom-scroll {
+  font: bold 14px arial;
+}
+
+.table-bottom-scroll i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.table-bottom-scroll .down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-bottom: 3.5px;
+  margin-right: 5px;
+}
+
+.table-bottom-scroll .up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-bottom: -2px;
+  margin-left: 6px;
+}
