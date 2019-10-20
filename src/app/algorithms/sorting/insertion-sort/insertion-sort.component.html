@@ -1,0 +1,31 @@
+<div class="bubbleSort">
+  <div>
+    <span class="heading">Insertion Sort</span>
+    <button (click)="downloadData()" class="button right bg-gradient1">Download Data</button>
+    <!--<button [className]="!showTable? 'disabled':'enable'" class="button right" [disabled]="!showTable">
+      Sort Data
+    </button>-->
+  </div>
+  <!--<div>{{countriesData | json}}</div>-->
+  <div>
+    <button (click)="sortArray()">test Sorting</button>
+    <h1>{{tempList}}</h1>
+    <table *ngIf="showTable">
+      <table class="table header">
+        <thead>
+        <tr>
+          <th class="th th-country">Country</th>
+          <th class="th th-temperature" (click)="insertionSortData()">Avg Temperature</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let country of countryDataRaw; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
+          <td class="td th-country">{{country.country}}</td>
+          <td class="td th-temperature" >{{country.temperature}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </table>
+  </div>
+
+</div>
