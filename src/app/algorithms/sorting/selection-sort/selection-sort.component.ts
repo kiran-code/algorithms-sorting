@@ -5,7 +5,7 @@ import {CountryTemperature} from '../../../models/CountryTemperature';
 @Component({
   selector: 'app-selection-sort',
   templateUrl: './selection-sort.component.html',
-  styleUrls: ['./selection-sort.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 export class SelectionSortComponent implements OnInit {
   countryRawData: CountryTemperature[] = [];
