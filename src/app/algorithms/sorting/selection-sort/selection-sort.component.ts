@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FetchSortingDataService} from '../../../services/fetch-sorting-data.service';
 import {CountryTemperature} from '../../../models/CountryTemperature';
+import {UtilsService} from '../../../services/utils.service';
 
 @Component({
   selector: 'app-selection-sort',
@@ -12,7 +13,7 @@ export class SelectionSortComponent implements OnInit {
   showTable = false;
   sortingDiection = '(asc)';
 
-  constructor(private fetchData: FetchSortingDataService) {
+  constructor(private fetchData: FetchSortingDataService, private utils: UtilsService) {
   }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class SelectionSortComponent implements OnInit {
   }
 
   selectionSortData() {
-    this.dataCorrection(this.countryRawData);
+    this.countryRawData = this.utils.correctData(this.countryRawData);
     if (this.sortingDiection === '(asc)') {
       this.selectionSortDataAsc();
     } else {

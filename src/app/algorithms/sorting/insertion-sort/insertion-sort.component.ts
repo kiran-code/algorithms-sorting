@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FetchSortingDataService} from '../../../services/fetch-sorting-data.service';
 import {CountryTemperature} from '../../../models/CountryTemperature';
 import {Observable} from 'rxjs';
+import { UtilsService } from '../../../services/utils.service';
 
 @Component({
   selector: 'app-insertion-sort',
@@ -15,7 +16,7 @@ export class InsertionSortComponent implements OnInit {
   sortDirection = 'up';
   tempList = [8, 6, 10, 3, 1];
   sortedArray = [];
-  constructor(private fetchData: FetchSortingDataService) {
+  constructor(private fetchData: FetchSortingDataService, private utils: UtilsService) {
   }
 
   ngOnInit() {
@@ -29,7 +30,7 @@ export class InsertionSortComponent implements OnInit {
   }
 
   insertionSortData() {
-    this.correctData();
+    this.countryDataRaw = this.utils.correctData(this.countryDataRaw);
     if (this.sortDirection === 'up') {
        this.insertionSortDataUp();
        this.sortDirection = 'down';
@@ -88,6 +89,7 @@ export class InsertionSortComponent implements OnInit {
     this.countryDataRaw = array.concat(this.countryDataRaw.splice(i + 1));
   }*/
 
+/*
   correctData() {
     for (const value of this.countryDataRaw) {
       if (!value.temperature) {
@@ -97,4 +99,5 @@ export class InsertionSortComponent implements OnInit {
       }
     }
   }
+*/
 }

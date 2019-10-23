@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FetchSortingDataService} from '../../../services/fetch-sorting-data.service';
 import {CountryTemperature} from '../../../models/CountryTemperature';
+import {UtilsService} from '../../../services/utils.service';
 
 @Component({
   selector: 'app-bubble-sort',
@@ -12,7 +13,7 @@ export class BubbleSortComponent implements OnInit {
   showTable = false;
   sortingDiection = '(asc)';
 
-  constructor(private fetchData: FetchSortingDataService) {
+  constructor(private fetchData: FetchSortingDataService, private utils: UtilsService) {
   }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class BubbleSortComponent implements OnInit {
   }
 
   bubbleSortData() {
-    this.dataCorrection(this.countriesData);
+    this.countriesData = this.utils.correctData(this.countriesData);
     for (let i = 0; i < this.countriesData.length; i++) {
       for (let j = 0; j < this.countriesData.length - i - 1; j++) {
         if (this.sortingDiection === '(asc)') {
