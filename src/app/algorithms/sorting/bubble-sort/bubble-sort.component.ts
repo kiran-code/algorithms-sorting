@@ -5,7 +5,7 @@ import {CountryTemperature} from '../../../models/CountryTemperature';
 @Component({
   selector: 'app-bubble-sort',
   templateUrl: './bubble-sort.component.html',
-  styleUrls: ['./bubble-sort.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 export class BubbleSortComponent implements OnInit {
   countriesData: CountryTemperature[];

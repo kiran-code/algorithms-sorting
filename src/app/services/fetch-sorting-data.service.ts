@@ -17,7 +17,6 @@ export class FetchSortingDataService {
 
   localServerUrl =  'http://localhost:8080/countryByTemperature.json';
 
-
   getCoutryData(): Observable<any> {
     return this.http.get(this.localServerUrl, httpOptions);
   }

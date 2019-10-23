@@ -6,15 +6,15 @@ import {Observable} from 'rxjs';
 @Component({
   selector: 'app-insertion-sort',
   templateUrl: './insertion-sort.component.html',
-  styleUrls: ['./insertion-sort.component.css']
+  styleUrls: ['../../../app.component.css']
 })
 export class InsertionSortComponent implements OnInit {
 
   countryDataRaw: CountryTemperature[] = [];
   showTable = false;
   sortDirection = 'up';
-  tempList = [17, 9, 2, 5, 1];
-
+  tempList = [8, 6, 10, 3, 1];
+  sortedArray = [];
   constructor(private fetchData: FetchSortingDataService) {
   }
 
@@ -31,27 +31,48 @@ export class InsertionSortComponent implements OnInit {
   insertionSortData() {
     this.correctData();
     if (this.sortDirection === 'up') {
-      //this.insertionSortDataUp();
-      this.sortDirection = 'down';
+       this.insertionSortDataUp();
+       this.sortDirection = 'down';
     } else {
-      // this.insertionSortDataDown();
+      this.insertionSortDataDown();
       this.sortDirection = 'up';
     }
   }
 
-  sortArray() {
-    for (let i = 1; i < this.tempList.length; i++) {
-      if (this.tempList[0] > this.tempList[i]) {
-        this.shiftArray(i, this.tempList[i]);
-      }
+  insertionSortDataUp() {
+    for (let i = 0; i < this.countryDataRaw.length - 1; i++) {
+        for ( let j = i + 1; j > 0; j--) {
+              if (this.countryDataRaw[j].temperature < this.countryDataRaw[j - 1].temperature) {
+                 this.swap(j);
+              }
+        }
+        console.log('i ' + i + ' ' + this.tempList);
     }
   }
 
-  shiftArray(i: number, x) {
+  insertionSortDataDown() {
+    for (let i = 0; i < this.countryDataRaw.length - 1; i++) {
+      for ( let j = i + 1; j > 0; j--) {
+        if (this.countryDataRaw[j].temperature > this.countryDataRaw[j - 1].temperature) {
+          this.swap(j);
+        }
+      }
+      console.log('i ' + i + ' ' + this.tempList);
+    }
+  }
+
+
+  private swap(j: number) {
+    const temp = this.countryDataRaw[j];
+    this.countryDataRaw[j] = this.countryDataRaw[j - 1];
+    this.countryDataRaw[j - 1] = temp;
+  }
+
+/*  shiftArray(i: number, x) {
     const array = this.tempList.slice(0, i);
     array.unshift(x);
     this.tempList = array.concat(this.tempList.splice(i + 1));
-  }
+  }*/
 
 /*  insertionSortDataUp() {
      for (let i = 1; i < this.countryDataRaw.length; i++) {
@@ -70,7 +91,7 @@ export class InsertionSortComponent implements OnInit {
   correctData() {
     for (const value of this.countryDataRaw) {
       if (!value.temperature) {
-        value.temperature = Math.random() * 25 - 10;
+        value.temperature = Math.floor(Math.random() * 25) - 10;
       } else {
         value.temperature *= 1;
       }
